@@ -11,7 +11,8 @@
 #GPL
 #
 
-import socket
+import socket, os, sys
+
 
 def retBanner(ip, port):
 	try:
@@ -23,7 +24,7 @@ def retBanner(ip, port):
 	except:
 		return 
 
-def checkVulns(banner):
+def checkVulns(banner, filename):
 	'''
 	if 'FreeFloat Ftp Server(Version 1.00)' in banner:
 		print '[+] FreeFloat FTP Server is vulnerable'
@@ -45,12 +46,24 @@ def checkVulns(banner):
 	return	
 	'''
 
-	f = open("vuln_banner.txt", 'r')
+	f = open(filename, 'r')
 	for line in f.readlines():
 		if line.strip('\n') in banner:
 			print "[+] Server is vulnerbale:"+banner.strip('\n')
 
 def main():
+	if len(sys.argv) == 2:
+		filename = sys.argv[1]
+		if not os.path.isfile(filename):
+			print '[-] ' + filename + ' does not exist.'
+			exit(0)
+
+		if not os.access(filename, os.R_OK):
+			print '[-] ' + filename + ' access denied'
+			exit(0)
+	else:
+		print '[-]Usage: ' + str(sys.argv[0])+'<vuln filename>'
+		exit(0)
 	portList = [21, 22, 25, 80, 110, 443]
 	for x in range(1, 255):
 		ip = '192.168.1.' + str(x)
@@ -58,7 +71,7 @@ def main():
 			banner = retBanner(ip, port)
 			if banner:
 				print '[+]' + ip +':'+banner
-				checkVulns(banner)
+				checkVulns(banner, filename)
 
 
 if __name__ == '__main__':
