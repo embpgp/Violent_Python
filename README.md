@@ -1,2 +1,3 @@
 # Violent_Python
-# the example codes about 《python绝技:运用python成为顶级黑客》
+# the example codes about the book《A Cookbook for Hackers,Forensic Analysts, Penetration Testers and Security Engineers》
+# I am learning...
