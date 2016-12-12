@@ -10,6 +10,8 @@
 #
 #GPL
 #
+#method: the zip file is use cmd:zip -rP 123456 ZIP_TEST.zip exam*
+#so the passwd is 123456 ,we can use the example_dictfile to burp crack it
 
 '''
 use dictionary file burp crack the zip files
