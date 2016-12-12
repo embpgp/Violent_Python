@@ -22,7 +22,7 @@ def retBanner(ip, port):
 		banner = s.recv(1024)
 		return banner
 	except:
-		return 
+		return
 
 def checkVulns(banner, filename):
 	'''
@@ -43,7 +43,7 @@ def checkVulns(banner, filename):
 
 		print '[-] FTP Server is not vulnerable.'
 
-	return	
+	return
 	'''
 
 	f = open(filename, 'r')
@@ -62,7 +62,7 @@ def main():
 			print '[-] ' + filename + ' access denied'
 			exit(0)
 	else:
-		print '[-]Usage: ' + str(sys.argv[0])+'<vuln filename>'
+		print '[-]Usage: ' + str(sys.argv[0])+' <vuln filename>'
 		exit(0)
 	portList = [21, 22, 25, 80, 110, 443]
 	for x in range(1, 255):
