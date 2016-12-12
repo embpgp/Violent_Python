@@ -19,8 +19,11 @@ import optparse, socket
 def connScan(tgtHost, tgtPort):
     try:
         connSkt = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        connSkt.connSkt((tgtHost, tgtPort))
+        connSkt.connect((tgtHost, tgtPort))
+        connSkt.send('thanks\r\n')
+        results = connSkt.recv(1024)
         print('[+]%d/tcp open' % tgtPort)
+        print('[+]'+str(results))
         connSkt.close()
     except:
         print('[-]%d/tcp closed'%tgtPort)
@@ -34,9 +37,9 @@ def portScan(tgtHost, tgtPorts):
         return
     try:
         tgtName = socket.gethostbyaddr(tgtIP)
-        print('\n[+]Scan Results for' + tgtName[0])
+        print('\n[+]Scan Results for ' + tgtName[0])
     except:
-        print('\n[+]Scan Results for' + tgtIP)
+        print('\n[+]Scan Results for ' + tgtIP)
     socket.setdefaulttimeout(1)
     for tgtPort in tgtPorts:
         print("Scanning port "+str(tgtPort))
@@ -54,10 +57,10 @@ def main():
         print(parser.usage)
         exit(0)
 
-    else:
-        print(tgtHost)
-        print(tgtPort)
+    args.append(tgtPort)
+    #print(args)
+    portScan(tgtHost, args)
 
 if __name__ == '__main__':
-    #main()
-    portScan('www.baidu.com', [80,443,3389,1433,23,445])
+    main()
+    #portScan('www.baidu.com', [80,443,3389,1433,23,445])
