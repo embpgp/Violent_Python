@@ -1,0 +1,5 @@
+[*] PDF MetaData For:ANONOPS_The_Press_Release.pdf
+[+]/Author:Alex Tapanaris
+[+]/Producer:OpenOffice.org 3.2
+[+]/Creator:Writer
+[+]/CreationDate:D:20101210031827+02'00'

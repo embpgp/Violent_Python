@@ -11,7 +11,8 @@
 #
 #GPL
 #
-# wget http://www.wired.com/images_blogs/threatlevel/2010/12/ANONOPS_The_Press_Release.pdf
+#pip install pyPdf
+#example: wget http://www.wired.com/images_blogs/threatlevel/2010/12/ANONOPS_The_Press_Release.pdf
 
 
 import pyPdf
